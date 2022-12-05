@@ -1,30 +1,42 @@
-type Token @entity {
+type TokenTransfer @entity {
   id: ID!
-  name: String!
-  symbol: String!
-  decimals: Int!
-  balances: [TokenBalance!]! @derivedFrom(field: "token")
-  approvals: [TokenApproval!]! @derivedFrom(field: "token")
+  txHash: Bytes!
+  blockNumber: Int!
+  timestamp: Int!
+  to: User!
+  from: User!
+  amount: BigInt!
 }
 
-type Account @entity {
+type Stake @entity {
   id: ID!
-  balances: [TokenBalance!]! @derivedFrom(field: "account")
-  incomingApprovals: [TokenApproval!]! @derivedFrom(field: "spenderAccount")
-  outgoingApprovals: [TokenApproval!]! @derivedFrom(field: "ownerAccount")
+  txHash: Bytes!
+  blockNumber: Int!
+  timestamp: Int!
+  user: User!
+  amount: BigInt!
 }
 
-type TokenBalance @entity {
+type Cooldown @entity {
   id: ID!
-  token: Token!
-  account: Account!
-  value: BigDecimal!
+  txHash: Bytes!
+  blockNumber: Int!
+  timestamp: Int!
+  user: User!
+  amount: BigInt!
+  cooldownTimestamp: Int!
 }
 
-type TokenApproval @entity {
+type Redeem @entity {
   id: ID!
-  token: Token!
-  ownerAccount: Account!
-  spenderAccount: Account!
-  value: BigDecimal!
+  txHash: Bytes!
+  blockNumber: Int!
+  timestamp: Int!
+  user: User!
+  amount: BigInt!
+}
+
+type User @entity {
+  id: ID!
+  balance: BigInt!
 }
