@@ -2,9 +2,6 @@ const path = require("path");
 
 const stkLyraDeployBlock = 15801447;
 const stkLyraProxy = "0xdE48b1B5853cc63B1D05e507414D3E02831722F8";
-const initialStakeLyra = "0xB0B06F0440ce13d03D41c5399C55AEfEa1b372CE";
-
-const registryAddress = "0xF5A0442D4753cA1Ea36427ec071aa5E786dA5916";
 const network = "optimism";
 
 const dataSources = [
